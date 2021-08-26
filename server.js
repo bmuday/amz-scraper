@@ -80,6 +80,19 @@ app.get("/search/:searchQuery", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+// Clone
+app.get("/clone/:url", (req, res) => {
+  const { url } = req.params;
+
+  axios
+    .get(`${baseUrl}&url=${url}`)
+    .then((res) => res.data)
+    .then((data) => {
+      res.json({ data });
+    })
+    .catch((err) => console.log(err));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
